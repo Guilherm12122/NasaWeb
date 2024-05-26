@@ -11,7 +11,7 @@ import pymysql
 #### MARS ####
 ##############
 pp = PrettyPrinter()
-api_key = '**********************'
+api_key = 'DTmqcdZjMXD0nO6Es4YWjoOinBY7H8D0gJ0uWMux'
 URL_APOD = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos"
 sol_mars = '1000'
 page = 1
