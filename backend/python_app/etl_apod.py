@@ -11,7 +11,7 @@ import pymysql
 #### APOD ####
 ##############
 pp = PrettyPrinter()
-api_key = 'DTmqcdZjMXD0nO6Es4YWjoOinBY7H8D0gJ0uWMux'
+api_key = '***************************'
 URL_APOD = "https://api.nasa.gov/planetary/apod"
 start_date = '2024-05-01'
 end_date = '2024-05-17'

@@ -11,7 +11,7 @@ import pymysql
 #### MARS ####
 ##############
 pp = PrettyPrinter()
-api_key = 'DTmqcdZjMXD0nO6Es4YWjoOinBY7H8D0gJ0uWMux'
+api_key = '**********************'
 URL_APOD = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos"
 sol_mars = '1000'
 page = 1
@@ -24,7 +24,7 @@ obj_dict = {
     'page': page
 }
 
-#### REALIZANDO REQUISIÇÃO ####
+#### REALIZANDO REQUISIÇÃO API NASA ####
 lista_mars = requests.get(URL_APOD, obj_dict).json()['photos']
 lista_mars = [(obj['rover']['name'], obj['img_src'], obj['earth_date']) 
               for obj in lista_mars]
