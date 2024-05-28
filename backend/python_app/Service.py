@@ -21,21 +21,28 @@ class Service(metaclass=abc.ABCMeta):
     def enviar_dados(self):
         pass
 
+    def apagar_dados_destino(self):
+        pass
+
 
 class MarsService(Service):
-    def __init__(self, api_key, url_mars, sol_mars, page):
+    def __init__(self, api_key, url_mars, sol_mars, page, alias):
         super().__init__
         self.api_key = api_key
         self.url_mars = url_mars
         self.sol_mars = sol_mars
         self.page = page
+        self.alias = alias
 
     def criar_objeto_requisicao(self):
         return {
             'api_key': self.api_key,
             'sol': self.sol_mars,
             'page': self.page
-        }   
+        }
+
+    def apagar_dados_destino(self, cursor):
+        cursor.execute(f"DELETE FROM {self.alias}")
 
     def realizar_requisicao(self):
         obj_req = self.criar_objeto_requisicao()
@@ -49,36 +56,38 @@ class MarsService(Service):
 
     def enviar_dados(self):
         conn = DataBaseHelper.getConn(host='localhost', psw='',
-                                      user='root', port=3306, 
+                                      user='root', port=3306,
                                       database='nasa_api')
         cursor = conn.cursor()
 
         dados_envio = self.tratar_dados_requisicao()
-
-        print("enviando dados")
+        self.apagar_dados_destino(cursor)
         cursor.executemany("INSERT INTO mars (rover, img_src, earth_date) VALUES (%s, %s, %s)",
                            dados_envio)
-        print("dados enviados")
         conn.commit()
         conn.close()
 
 
 class ApodService(Service):
-    def __init__(self, api_key, url_apod, start_date, end_date, hd):
+    def __init__(self, api_key, url_apod, hd, alias, start_date, end_date):
         super().__init__
         self.api_key = api_key
         self.url_apod = url_apod
+        self.hd = hd
+        self.alias = alias
         self.start_date = start_date
         self.end_date = end_date
-        self.hd = hd
 
     def criar_objeto_requisicao(self):
         return {
             'api_key': self.api_key,
-            'start_date': self.start_date,
-            'end_date': self.end_date,
-            'hd': self.hd
+            'hd': self.hd,
+            'start_date': str(self.start_date),
+            'end_date': str(self.end_date)
         }
+
+    def apagar_dados_destino(self, cursor):
+        cursor.execute(f"DELETE FROM {self.alias}")
 
     def realizar_requisicao(self):
         obj_req = self.criar_objeto_requisicao()
@@ -103,10 +112,8 @@ class ApodService(Service):
         cursor = conn.cursor()
 
         dados_envio = self.tratar_dados_requisicao()
-
-        print("enviando dados")
+        self.apagar_dados_destino(cursor)
         cursor.executemany("INSERT INTO apod (date, title, explanation, url) VALUES (%s, %s, %s, %s)",
                            dados_envio)
-        print("dados enviados")
         conn.commit()
         conn.close()
