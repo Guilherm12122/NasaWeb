@@ -1,0 +1,29 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Apods</li>
+  </ol>
+</nav>
+<div class="container">
+  <div class="card list-car">
+    <h5 class="card-header">Lista de apods</h5>
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Data</th>
+              <th scope="col">Título</th>
+              <th scope="col">Explicação</th>
+              <th scope="col">URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let apod of apods">
+              <td>{{apod.date}}</td>
+              <td>{{apod.title}}</td>
+              <td>{{apod.explanation}}</td>
+              <td>{{apod.url}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
