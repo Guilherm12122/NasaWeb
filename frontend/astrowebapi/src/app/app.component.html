@@ -1,12 +1,5 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Apods</li>
-  </ol>
-</nav>
-<div class="container">
-  <div class="card list-car">
-    <h5 class="card-header">Lista de apods</h5>
-    <div class="card-body">
+<div class="objs">
+      <!-- <div class="apod">
       <table class="table">
           <thead>
             <tr>
@@ -25,5 +18,23 @@
             </tr>
           </tbody>
         </table>
+      </div> -->
+      <div class="mars">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Data na terra</th>
+              <th scope="col">URL</th>
+              <th scope="col">Robô</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mar of mars">
+              <td>{{mar.earth_date}}</td>
+              <td>{{mar.img_src}}</td>
+              <td>{{mar.rover}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
