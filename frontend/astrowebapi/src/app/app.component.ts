@@ -6,8 +6,22 @@ import { MarsService } from './services/mars.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `
+    <div *ngFor="let mar of mars">
+      <!-- {{mar.earth_date}}
+      {{mar.img_src}}
+      {{mar.rover}} -->
+      <mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{mar.rover}}</mat-card-title>
+    <mat-card-subtitle>{{mar.earth_date}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src={{mar.img_src}} alt="Photo of a Shiba Inu">
+</mat-card>
+    </div>
+  `,
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
 
