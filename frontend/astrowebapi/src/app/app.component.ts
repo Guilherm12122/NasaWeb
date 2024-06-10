@@ -7,7 +7,8 @@ import { MarsService } from './services/mars.service';
 @Component({
   selector: 'app-root',
   template: `
-    <div *ngFor="let mar of mars">
+  <div class="container">
+    <div *ngFor="let mar of mars" class="card-containe">
       <!-- {{mar.earth_date}}
       {{mar.img_src}}
       {{mar.rover}} -->
@@ -19,6 +20,7 @@ import { MarsService } from './services/mars.service';
   </mat-card-header>
   <img mat-card-image src={{mar.img_src}} alt="Photo of a Shiba Inu">
 </mat-card>
+    </div>
     </div>
   `,
   styleUrls: ['./app.component.css'],
