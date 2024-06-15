@@ -8,16 +8,94 @@
   flex: 1 0 calc(33.333% - 200px);
 }
 
+mat-sidenav {
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 250px;
+  border-right: none;
+  background: rgb(140, 152, 223);
+  color: white;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  /* border: gold;
+  border-style: solid; */
+  height: 4000px;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+}
+
+mat-icon {
+  margin-right: 20px;
+}
+
+mat-sidenav-container {
+  height: 4000px;
+  /* border: greenyellow;
+  border-style: solid; */
+  width: 300px;
+  padding-right: 30px;
+  margin-top: 10px;
+}
+
+mat-toolbar {
+  background: rgb(140, 152, 223);
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  height: 100px;
+  /* padding-left: 79px;
+  margin-right: 10px; */
+}
+
 .container{
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  /* gap: 16px; */
+  /* border: gold;
+  border-style: solid; */
+  width: 1200px;
+  margin-left: 35px;
+  margin-right: 70px;
+}
+
+.marte-icon{
+  color: white;
+  font-size: 25px;
+}
+
+.marte-span{
+  color: white;
+  font-size: 25px;
+}
+
+.astro-icon{
+  color: white;
+  font-size: 25px;
+}
+
+.astro-span{
+  color: white;
+  font-size: 25px;
+}
+
+.conteudo{
+  display: flex;
+  gap: 5px;
 }
 
 .example-card{
   border-radius: 2%;
   box-shadow: 0 0.1rem 0.5rem #747070;
   transition: transform 0.2s;
+  /* border: gold;
+  border-style: solid; */
 }
 
 .example-card:hover{
