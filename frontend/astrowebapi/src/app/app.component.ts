@@ -15,23 +15,21 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   <div class="conteudo">
   <mat-sidenav-container>
     <mat-sidenav class="mat-elevation-z8">
-      <button mat-button class="menu-button">
+      <button (click)="activateMars()" mat-button class="menu-button">
         <mat-icon class="marte-icon">home</mat-icon>
         <span class="marte-span">Marte</span>
       </button>
-      <button mat-button class="menu-button">
+      <button (click)="activateApod()" mat-button class="menu-button">
         <mat-icon class="astro-icon">home</mat-icon>
         <span class="astro-span">Astros</span>
       </button>
     </mat-sidenav>
   </mat-sidenav-container>
-  <!-- <app-btmars (onPlusClick)="toggleStepper = !toggleStepper"></app-btmars> -->
+
   <div class="container">
+    @if(mars_allow){
     <div *ngFor="let mar of mars" class="card-containe">
-      <!-- {{mar.earth_date}}
-      {{mar.img_src}}
-      {{mar.rover}} -->
-      <mat-card class="example-card" *ngIf="toggleStepper">
+      <mat-card class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{mar.rover}}</mat-card-title>
@@ -40,15 +38,31 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   <img mat-card-image src={{mar.img_src}} alt="Photo of a Shiba Inu">
 </mat-card>
     </div>
+    }@else {
+      <div *ngFor="let apod of apods" class="card-containe">
+      <mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{apod.title}}</mat-card-title>
+    <mat-card-subtitle>{{apod.date}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src={{apod.url}} alt="Photo of a Shiba Inu">
+</mat-card>
     </div>
+    }
+
+
+
     </div>
+  </div>
 
   `,
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
-  toggleStepper = true;
+  apod_allow: Boolean = false;
+  mars_allow: Boolean = false;
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
@@ -61,6 +75,16 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(private apodservice: ApodService,
     private marservice: MarsService, private observer: BreakpointObserver) {}
+
+    activateMars(){
+      this.mars_allow = true;
+      this.apod_allow = false;
+    }
+
+    activateApod(){
+      this.apod_allow = true;
+      this.mars_allow = false;
+    }
 
     ngAfterViewInit() {
       setTimeout(() => {
