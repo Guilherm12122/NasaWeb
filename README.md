@@ -12,3 +12,4 @@
 
 
 ## Desenho de Arquitetura
+![alt text](https://github.com/Guilherm12122/nasa-web-api/blob/main/assets/arquitetura_nasa_web_local.jpg)
