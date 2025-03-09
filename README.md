@@ -105,7 +105,6 @@
 | ------ | ---------- | -------------------------------------------- |
 | GET    | `/v1/mars` | Retorna imagens recentes dos rovers em Marte |
 | GET    | `/v1/apod` | Retorna imagens de satélites da Terra        |
-| GET    | `/docs`    | Documentação interativa com Swagger UI       |
 
 ---
 
