@@ -43,8 +43,8 @@
 ### 🚀 **1. Clone o Repositório**
 
 ```bash
-  git clone https://github.com/Guilherm12122/NasaWeb.git
-  cd NasaWeb
+  git clone https://github.com/Guilherm12122/nasa-data-explorer.git
+  cd nasa-data-explorer
 ```
 
 ### 🔧 **2. Configurar o Banco de Dados (MySQL)**
